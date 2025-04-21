@@ -1,0 +1,688 @@
+
+GccApplication6.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000436  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000003c2  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000008b  00800100  00800100  00000436  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000436  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000468  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000f0  00000000  00000000  000004a8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000f25  00000000  00000000  00000598  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000985  00000000  00000000  000014bd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000078d  00000000  00000000  00001e42  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000240  00000000  00000000  000025d0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000059e  00000000  00000000  00002810  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000065a  00000000  00000000  00002dae  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000d0  00000000  00000000  00003408  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 be 00 	jmp	0x17c	; 0x17c <__vector_14>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 8b 01 	jmp	0x316	; 0x316 <__vector_18>
+  4c:	0c 94 4e 01 	jmp	0x29c	; 0x29c <__vector_19>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e2 ec       	ldi	r30, 0xC2	; 194
+  7c:	f3 e0       	ldi	r31, 0x03	; 3
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a0 30       	cpi	r26, 0x00	; 0
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a0 e0       	ldi	r26, 0x00	; 0
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	ab 38       	cpi	r26, 0x8B	; 139
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 f5 00 	call	0x1ea	; 0x1ea <main>
+  9e:	0c 94 df 01 	jmp	0x3be	; 0x3be <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <setupPWM>:
+#define SPEAKER_PIN PB2  // Pin D10 for speaker (OC2A on Timer2)
+
+void setupPWM()
+{
+	// Configure Timer1 for Fast PWM mode (servo control)
+	TCCR1A |= (1 << COM1A1) | (1 << WGM11);
+  a6:	e0 e8       	ldi	r30, 0x80	; 128
+  a8:	f0 e0       	ldi	r31, 0x00	; 0
+  aa:	80 81       	ld	r24, Z
+  ac:	82 68       	ori	r24, 0x82	; 130
+  ae:	80 83       	st	Z, r24
+	TCCR1B |= (1 << WGM13) | (1 << WGM12) | (1 << CS11); // Prescaler = 8
+  b0:	e1 e8       	ldi	r30, 0x81	; 129
+  b2:	f0 e0       	ldi	r31, 0x00	; 0
+  b4:	80 81       	ld	r24, Z
+  b6:	8a 61       	ori	r24, 0x1A	; 26
+  b8:	80 83       	st	Z, r24
+	ICR1 = 40000; // (16MHz / 8) / 50Hz = 40000
+  ba:	80 e4       	ldi	r24, 0x40	; 64
+  bc:	9c e9       	ldi	r25, 0x9C	; 156
+  be:	90 93 87 00 	sts	0x0087, r25	; 0x800087 <__TEXT_REGION_LENGTH__+0x7f8087>
+  c2:	80 93 86 00 	sts	0x0086, r24	; 0x800086 <__TEXT_REGION_LENGTH__+0x7f8086>
+	DDRB |= (1 << PB1);  // Set PB1 as output (Servo control)
+  c6:	84 b1       	in	r24, 0x04	; 4
+  c8:	82 60       	ori	r24, 0x02	; 2
+  ca:	84 b9       	out	0x04, r24	; 4
+  cc:	08 95       	ret
+
+000000ce <setServoAngle>:
+}
+
+void setServoAngle(int16_t speed)
+{
+	OCR1A = 2950 + speed; // 3000 - stop, >3000 - CCW , <3000 CW
+  ce:	8a 57       	subi	r24, 0x7A	; 122
+  d0:	94 4f       	sbci	r25, 0xF4	; 244
+  d2:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+  d6:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+  da:	08 95       	ret
+
+000000dc <setupButtons>:
+}
+
+void setupButtons()
+{
+	DDRD &= ~(1 << BUTTON_OPEN);  // Set PD2 as input
+  dc:	8a b1       	in	r24, 0x0a	; 10
+  de:	87 7f       	andi	r24, 0xF7	; 247
+  e0:	8a b9       	out	0x0a, r24	; 10
+	DDRD &= ~(1 << BUTTON_CLOSE); // Set PD3 as input
+  e2:	8a b1       	in	r24, 0x0a	; 10
+  e4:	8f 7e       	andi	r24, 0xEF	; 239
+  e6:	8a b9       	out	0x0a, r24	; 10
+	PORTD |= (1 << BUTTON_OPEN);  // Enable pull-up resistor on PD2
+  e8:	8b b1       	in	r24, 0x0b	; 11
+  ea:	88 60       	ori	r24, 0x08	; 8
+  ec:	8b b9       	out	0x0b, r24	; 11
+	PORTD |= (1 << BUTTON_CLOSE); // Enable pull-up resistor on PD3
+  ee:	8b b1       	in	r24, 0x0b	; 11
+  f0:	80 61       	ori	r24, 0x10	; 16
+  f2:	8b b9       	out	0x0b, r24	; 11
+  f4:	08 95       	ret
+
+000000f6 <doorOpen>:
+}
+
+void doorOpen()
+{
+	setServoAngle(200);  // Open door by rotating servo
+  f6:	88 ec       	ldi	r24, 0xC8	; 200
+  f8:	90 e0       	ldi	r25, 0x00	; 0
+  fa:	0e 94 67 00 	call	0xce	; 0xce <setServoAngle>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  fe:	2f ef       	ldi	r18, 0xFF	; 255
+ 100:	88 ef       	ldi	r24, 0xF8	; 248
+ 102:	95 e1       	ldi	r25, 0x15	; 21
+ 104:	21 50       	subi	r18, 0x01	; 1
+ 106:	80 40       	sbci	r24, 0x00	; 0
+ 108:	90 40       	sbci	r25, 0x00	; 0
+ 10a:	e1 f7       	brne	.-8      	; 0x104 <doorOpen+0xe>
+ 10c:	00 c0       	rjmp	.+0      	; 0x10e <doorOpen+0x18>
+ 10e:	00 00       	nop
+	_delay_ms(450);      // Wait 1 second for the door to open
+
+	setServoAngle(0);    // Stop the servo rotation
+ 110:	80 e0       	ldi	r24, 0x00	; 0
+ 112:	90 e0       	ldi	r25, 0x00	; 0
+ 114:	0e 94 67 00 	call	0xce	; 0xce <setServoAngle>
+ 118:	08 95       	ret
+
+0000011a <doorClose>:
+}
+
+void doorClose()
+{
+	setServoAngle(-200);  // Close door by rotating servo in the opposite direction
+ 11a:	88 e3       	ldi	r24, 0x38	; 56
+ 11c:	9f ef       	ldi	r25, 0xFF	; 255
+ 11e:	0e 94 67 00 	call	0xce	; 0xce <setServoAngle>
+ 122:	2f ef       	ldi	r18, 0xFF	; 255
+ 124:	8c eb       	ldi	r24, 0xBC	; 188
+ 126:	9f e1       	ldi	r25, 0x1F	; 31
+ 128:	21 50       	subi	r18, 0x01	; 1
+ 12a:	80 40       	sbci	r24, 0x00	; 0
+ 12c:	90 40       	sbci	r25, 0x00	; 0
+ 12e:	e1 f7       	brne	.-8      	; 0x128 <doorClose+0xe>
+ 130:	00 c0       	rjmp	.+0      	; 0x132 <doorClose+0x18>
+ 132:	00 00       	nop
+	_delay_ms(650);      // Wait 1 second for the door to close
+
+	setServoAngle(0);    // Stop the servo rotation
+ 134:	80 e0       	ldi	r24, 0x00	; 0
+ 136:	90 e0       	ldi	r25, 0x00	; 0
+ 138:	0e 94 67 00 	call	0xce	; 0xce <setServoAngle>
+ 13c:	08 95       	ret
+
+0000013e <initADCSetup>:
+}
+
+void initADCSetup(void)
+{
+	ADMUX = (1 << REFS0) | PHOTORESISTOR_PIN;  // AVcc as reference, select ADC0
+ 13e:	80 e4       	ldi	r24, 0x40	; 64
+ 140:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__TEXT_REGION_LENGTH__+0x7f807c>
+	ADCSRA = (1 << ADEN) | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0);  // Enable ADC, prescaler 128
+ 144:	87 e8       	ldi	r24, 0x87	; 135
+ 146:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__TEXT_REGION_LENGTH__+0x7f807a>
+ 14a:	08 95       	ret
+
+0000014c <readADCValue>:
+}
+
+uint16_t readADCValue(void)
+{
+	ADCSRA |= (1 << ADSC);  // Start conversion
+ 14c:	ea e7       	ldi	r30, 0x7A	; 122
+ 14e:	f0 e0       	ldi	r31, 0x00	; 0
+ 150:	80 81       	ld	r24, Z
+ 152:	80 64       	ori	r24, 0x40	; 64
+ 154:	80 83       	st	Z, r24
+	while (ADCSRA & (1 << ADSC));  // Wait for conversion to finish
+ 156:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7f807a>
+ 15a:	86 fd       	sbrc	r24, 6
+ 15c:	fc cf       	rjmp	.-8      	; 0x156 <readADCValue+0xa>
+	return ADC;
+ 15e:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7f8078>
+ 162:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
+}
+ 166:	08 95       	ret
+
+00000168 <setupTimerInterrupt>:
+
+void setupTimerInterrupt(void)
+{
+	TCCR0A = (1 << WGM01); // CTC mode
+ 168:	82 e0       	ldi	r24, 0x02	; 2
+ 16a:	84 bd       	out	0x24, r24	; 36
+	TCCR0B = (1 << CS02) | (1 << CS00); // Prescaler 1024
+ 16c:	95 e0       	ldi	r25, 0x05	; 5
+ 16e:	95 bd       	out	0x25, r25	; 37
+	OCR0A = 156; // Approx 100ms interrupt at 16MHz clock
+ 170:	9c e9       	ldi	r25, 0x9C	; 156
+ 172:	97 bd       	out	0x27, r25	; 39
+	TIMSK0 = (1 << OCIE0A); // Enable compare match interrupt
+ 174:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__TEXT_REGION_LENGTH__+0x7f806e>
+	sei(); // Enable global interrupts
+ 178:	78 94       	sei
+ 17a:	08 95       	ret
+
+0000017c <__vector_14>:
+}
+
+volatile uint8_t timerFlag = 0;
+
+ISR(TIMER0_COMPA_vect)
+{
+ 17c:	1f 92       	push	r1
+ 17e:	0f 92       	push	r0
+ 180:	0f b6       	in	r0, 0x3f	; 63
+ 182:	0f 92       	push	r0
+ 184:	11 24       	eor	r1, r1
+ 186:	8f 93       	push	r24
+	timerFlag = 1;
+ 188:	81 e0       	ldi	r24, 0x01	; 1
+ 18a:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+}
+ 18e:	8f 91       	pop	r24
+ 190:	0f 90       	pop	r0
+ 192:	0f be       	out	0x3f, r0	; 63
+ 194:	0f 90       	pop	r0
+ 196:	1f 90       	pop	r1
+ 198:	18 95       	reti
+
+0000019a <setupTone>:
+
+// Setup Timer2 for generating tone on D8 (PD6)
+void setupTone()
+{
+	// Configure Timer2 in Fast PWM mode to generate tone
+	TCCR2A |= (1 << WGM21) | (1 << WGM20) | (1 << COM2A0);  // Fast PWM mode, toggle OC2A on compare match
+ 19a:	e0 eb       	ldi	r30, 0xB0	; 176
+ 19c:	f0 e0       	ldi	r31, 0x00	; 0
+ 19e:	80 81       	ld	r24, Z
+ 1a0:	83 64       	ori	r24, 0x43	; 67
+ 1a2:	80 83       	st	Z, r24
+	TCCR2B |= (1 << CS21);  // Prescaler = 8
+ 1a4:	e1 eb       	ldi	r30, 0xB1	; 177
+ 1a6:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a8:	80 81       	ld	r24, Z
+ 1aa:	82 60       	ori	r24, 0x02	; 2
+ 1ac:	80 83       	st	Z, r24
+
+	// Set PD6 (OC2A) as output
+	DDRD |= (1 << PD6);
+ 1ae:	8a b1       	in	r24, 0x0a	; 10
+ 1b0:	80 64       	ori	r24, 0x40	; 64
+ 1b2:	8a b9       	out	0x0a, r24	; 10
+ 1b4:	08 95       	ret
+
+000001b6 <playTone>:
+}
+
+void playTone(uint16_t frequency)
+{
+	// Calculate the OCR2A value based on the desired frequency
+	uint16_t ocrValue = (F_CPU / (2 * 8 * frequency)) - 1;
+ 1b6:	82 95       	swap	r24
+ 1b8:	92 95       	swap	r25
+ 1ba:	90 7f       	andi	r25, 0xF0	; 240
+ 1bc:	98 27       	eor	r25, r24
+ 1be:	80 7f       	andi	r24, 0xF0	; 240
+ 1c0:	98 27       	eor	r25, r24
+ 1c2:	9c 01       	movw	r18, r24
+ 1c4:	40 e0       	ldi	r20, 0x00	; 0
+ 1c6:	50 e0       	ldi	r21, 0x00	; 0
+ 1c8:	60 e0       	ldi	r22, 0x00	; 0
+ 1ca:	74 e2       	ldi	r23, 0x24	; 36
+ 1cc:	84 ef       	ldi	r24, 0xF4	; 244
+ 1ce:	90 e0       	ldi	r25, 0x00	; 0
+ 1d0:	0e 94 bd 01 	call	0x37a	; 0x37a <__udivmodsi4>
+ 1d4:	21 50       	subi	r18, 0x01	; 1
+ 1d6:	31 09       	sbc	r19, r1
+	OCR2A = ocrValue;
+ 1d8:	20 93 b3 00 	sts	0x00B3, r18	; 0x8000b3 <__TEXT_REGION_LENGTH__+0x7f80b3>
+ 1dc:	08 95       	ret
+
+000001de <stopTone>:
+}
+
+void stopTone()
+{
+	// Stop PWM on OC2A (PD6)
+	TCCR2A &= ~(1 << COM2A0);
+ 1de:	e0 eb       	ldi	r30, 0xB0	; 176
+ 1e0:	f0 e0       	ldi	r31, 0x00	; 0
+ 1e2:	80 81       	ld	r24, Z
+ 1e4:	8f 7b       	andi	r24, 0xBF	; 191
+ 1e6:	80 83       	st	Z, r24
+ 1e8:	08 95       	ret
+
+000001ea <main>:
+}
+
+int main(void)
+{
+	int doorState = 0;
+	setupPWM();  // Initialize PWM for servo
+ 1ea:	0e 94 53 00 	call	0xa6	; 0xa6 <setupPWM>
+	setupButtons();  // Initialize button inputs
+ 1ee:	0e 94 6e 00 	call	0xdc	; 0xdc <setupButtons>
+	initADCSetup();  // Initialize ADC for light sensor
+ 1f2:	0e 94 9f 00 	call	0x13e	; 0x13e <initADCSetup>
+	setupTimerInterrupt();  // Set up timer interrupt
+ 1f6:	0e 94 b4 00 	call	0x168	; 0x168 <setupTimerInterrupt>
+	setupTone();  // Set up tone generation for speaker
+ 1fa:	0e 94 cd 00 	call	0x19a	; 0x19a <setupTone>
+	TCCR2A &= ~(1 << COM2A0);
+}
+
+int main(void)
+{
+	int doorState = 0;
+ 1fe:	c0 e0       	ldi	r28, 0x00	; 0
+ 200:	d0 e0       	ldi	r29, 0x00	; 0
+	setupTimerInterrupt();  // Set up timer interrupt
+	setupTone();  // Set up tone generation for speaker
+
+	while (1)
+	{
+		uint16_t lightLevel = readADCValue();  // Read light sensor value
+ 202:	0e 94 a6 00 	call	0x14c	; 0x14c <readADCValue>
+		
+		// Check if the PSR is covered (dark)
+		if (lightLevel < THRESHOLD)
+ 206:	84 3f       	cpi	r24, 0xF4	; 244
+ 208:	21 e0       	ldi	r18, 0x01	; 1
+ 20a:	92 07       	cpc	r25, r18
+ 20c:	60 f4       	brcc	.+24     	; 0x226 <main+0x3c>
+		{
+			
+			// If it's dark, prevent the door from opening
+			if (!(PIND & (1 << BUTTON_OPEN))) // If button 1 (PD2) is pressed
+ 20e:	4b 99       	sbic	0x09, 3	; 9
+ 210:	0a c0       	rjmp	.+20     	; 0x226 <main+0x3c>
+ 212:	3f ef       	ldi	r19, 0xFF	; 255
+ 214:	41 ee       	ldi	r20, 0xE1	; 225
+ 216:	24 e0       	ldi	r18, 0x04	; 4
+ 218:	31 50       	subi	r19, 0x01	; 1
+ 21a:	40 40       	sbci	r20, 0x00	; 0
+ 21c:	20 40       	sbci	r18, 0x00	; 0
+ 21e:	e1 f7       	brne	.-8      	; 0x218 <main+0x2e>
+ 220:	00 c0       	rjmp	.+0      	; 0x222 <main+0x38>
+ 222:	00 00       	nop
+			{
+				_delay_ms(100); // Debounce
+				if (!(PIND & (1 << BUTTON_OPEN)))
+ 224:	29 b1       	in	r18, 0x09	; 9
+					// Do nothing since the door cannot open when it's dark
+				}
+			}
+			
+		}
+		if (lightLevel > THRESHOLD)
+ 226:	85 3f       	cpi	r24, 0xF5	; 245
+ 228:	91 40       	sbci	r25, 0x01	; 1
+ 22a:	58 f3       	brcs	.-42     	; 0x202 <main+0x18>
+		{
+			
+			// If it's light, door can open
+			if (!(PIND & (1 << BUTTON_OPEN))) // If button 1 (PD2) is pressed
+ 22c:	4b 99       	sbic	0x09, 3	; 9
+ 22e:	20 c0       	rjmp	.+64     	; 0x270 <main+0x86>
+ 230:	4f ef       	ldi	r20, 0xFF	; 255
+ 232:	81 ee       	ldi	r24, 0xE1	; 225
+ 234:	94 e0       	ldi	r25, 0x04	; 4
+ 236:	41 50       	subi	r20, 0x01	; 1
+ 238:	80 40       	sbci	r24, 0x00	; 0
+ 23a:	90 40       	sbci	r25, 0x00	; 0
+ 23c:	e1 f7       	brne	.-8      	; 0x236 <main+0x4c>
+ 23e:	00 c0       	rjmp	.+0      	; 0x240 <main+0x56>
+ 240:	00 00       	nop
+			{
+				_delay_ms(100);  // Debounce
+				if (!(PIND & (1 << BUTTON_OPEN)) && doorState == 0)
+ 242:	4b 99       	sbic	0x09, 3	; 9
+ 244:	15 c0       	rjmp	.+42     	; 0x270 <main+0x86>
+ 246:	20 97       	sbiw	r28, 0x00	; 0
+ 248:	99 f4       	brne	.+38     	; 0x270 <main+0x86>
+				{
+					doorOpen();
+ 24a:	0e 94 7b 00 	call	0xf6	; 0xf6 <doorOpen>
+					doorState = 1;  // Set door state to open
+					playTone(1000);  // Play 1000 Hz tone when door opens
+ 24e:	88 ee       	ldi	r24, 0xE8	; 232
+ 250:	93 e0       	ldi	r25, 0x03	; 3
+ 252:	0e 94 db 00 	call	0x1b6	; 0x1b6 <playTone>
+ 256:	2f ef       	ldi	r18, 0xFF	; 255
+ 258:	33 ed       	ldi	r19, 0xD3	; 211
+ 25a:	40 e3       	ldi	r20, 0x30	; 48
+ 25c:	21 50       	subi	r18, 0x01	; 1
+ 25e:	30 40       	sbci	r19, 0x00	; 0
+ 260:	40 40       	sbci	r20, 0x00	; 0
+ 262:	e1 f7       	brne	.-8      	; 0x25c <main+0x72>
+ 264:	00 c0       	rjmp	.+0      	; 0x266 <main+0x7c>
+ 266:	00 00       	nop
+					_delay_ms(1000);  // Wait for 1 second
+					stopTone();  // Stop tone after 1 second
+ 268:	0e 94 ef 00 	call	0x1de	; 0x1de <stopTone>
+			{
+				_delay_ms(100);  // Debounce
+				if (!(PIND & (1 << BUTTON_OPEN)) && doorState == 0)
+				{
+					doorOpen();
+					doorState = 1;  // Set door state to open
+ 26c:	c1 e0       	ldi	r28, 0x01	; 1
+ 26e:	d0 e0       	ldi	r29, 0x00	; 0
+					playTone(1000);  // Play 1000 Hz tone when door opens
+					_delay_ms(1000);  // Wait for 1 second
+					stopTone();  // Stop tone after 1 second
+				}
+			}
+			if (!(PIND & (1 << BUTTON_CLOSE))) // If button 2 (PD3) is pressed
+ 270:	4c 99       	sbic	0x09, 4	; 9
+ 272:	c7 cf       	rjmp	.-114    	; 0x202 <main+0x18>
+ 274:	8f ef       	ldi	r24, 0xFF	; 255
+ 276:	91 ee       	ldi	r25, 0xE1	; 225
+ 278:	24 e0       	ldi	r18, 0x04	; 4
+ 27a:	81 50       	subi	r24, 0x01	; 1
+ 27c:	90 40       	sbci	r25, 0x00	; 0
+ 27e:	20 40       	sbci	r18, 0x00	; 0
+ 280:	e1 f7       	brne	.-8      	; 0x27a <main+0x90>
+ 282:	00 c0       	rjmp	.+0      	; 0x284 <main+0x9a>
+ 284:	00 00       	nop
+		{
+			_delay_ms(100); // Debounce
+			if (!(PIND & (1 << BUTTON_CLOSE)) && doorState == 1)
+ 286:	4c 99       	sbic	0x09, 4	; 9
+ 288:	bc cf       	rjmp	.-136    	; 0x202 <main+0x18>
+ 28a:	c1 30       	cpi	r28, 0x01	; 1
+ 28c:	d1 05       	cpc	r29, r1
+ 28e:	09 f0       	breq	.+2      	; 0x292 <main+0xa8>
+ 290:	b8 cf       	rjmp	.-144    	; 0x202 <main+0x18>
+			{
+				doorClose();
+ 292:	0e 94 8d 00 	call	0x11a	; 0x11a <doorClose>
+				doorState = 0;  // Set door state to closed
+ 296:	c0 e0       	ldi	r28, 0x00	; 0
+ 298:	d0 e0       	ldi	r29, 0x00	; 0
+ 29a:	b3 cf       	rjmp	.-154    	; 0x202 <main+0x18>
+
+0000029c <__vector_19>:
+
+// ******************************************************
+//	Handle for Tx Interrupt 
+//******************************************************
+
+ISR (USART_UDRE_vect)  {		// Handler for uart data buffer empty interrupt 
+ 29c:	1f 92       	push	r1
+ 29e:	0f 92       	push	r0
+ 2a0:	0f b6       	in	r0, 0x3f	; 63
+ 2a2:	0f 92       	push	r0
+ 2a4:	11 24       	eor	r1, r1
+ 2a6:	2f 93       	push	r18
+ 2a8:	8f 93       	push	r24
+ 2aa:	9f 93       	push	r25
+ 2ac:	ef 93       	push	r30
+ 2ae:	ff 93       	push	r31
+
+    if (TxDCnt0 > 0) {
+ 2b0:	80 91 8a 01 	lds	r24, 0x018A	; 0x80018a <TxDCnt0>
+ 2b4:	88 23       	and	r24, r24
+ 2b6:	29 f1       	breq	.+74     	; 0x302 <__vector_19+0x66>
+        UDR0 = *TxDBuffRD0;           		// write byte to data buffer 
+ 2b8:	e0 91 05 01 	lds	r30, 0x0105	; 0x800105 <TxDBuffRD0>
+ 2bc:	f0 91 06 01 	lds	r31, 0x0106	; 0x800106 <TxDBuffRD0+0x1>
+ 2c0:	80 81       	ld	r24, Z
+ 2c2:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+        if (++TxDBuffRD0 >= TxDBuff0 + UART_BUF_SIZE) // Wrap Pointer 
+ 2c6:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <TxDBuffRD0>
+ 2ca:	90 91 06 01 	lds	r25, 0x0106	; 0x800106 <TxDBuffRD0+0x1>
+ 2ce:	01 96       	adiw	r24, 0x01	; 1
+ 2d0:	90 93 06 01 	sts	0x0106, r25	; 0x800106 <TxDBuffRD0+0x1>
+ 2d4:	80 93 05 01 	sts	0x0105, r24	; 0x800105 <TxDBuffRD0>
+ 2d8:	87 58       	subi	r24, 0x87	; 135
+ 2da:	91 40       	sbci	r25, 0x01	; 1
+ 2dc:	30 f0       	brcs	.+12     	; 0x2ea <__vector_19+0x4e>
+            TxDBuffRD0 = TxDBuff0;
+ 2de:	87 e4       	ldi	r24, 0x47	; 71
+ 2e0:	91 e0       	ldi	r25, 0x01	; 1
+ 2e2:	90 93 06 01 	sts	0x0106, r25	; 0x800106 <TxDBuffRD0+0x1>
+ 2e6:	80 93 05 01 	sts	0x0105, r24	; 0x800105 <TxDBuffRD0>
+        if(--TxDCnt0 == 0)             			// if buffer is empty: 
+ 2ea:	80 91 8a 01 	lds	r24, 0x018A	; 0x80018a <TxDCnt0>
+ 2ee:	81 50       	subi	r24, 0x01	; 1
+ 2f0:	80 93 8a 01 	sts	0x018A, r24	; 0x80018a <TxDCnt0>
+ 2f4:	81 11       	cpse	r24, r1
+ 2f6:	05 c0       	rjmp	.+10     	; 0x302 <__vector_19+0x66>
+            UCSR0B&=~(1<<UDRIE0);                    // disable UDRIE int 
+ 2f8:	e1 ec       	ldi	r30, 0xC1	; 193
+ 2fa:	f0 e0       	ldi	r31, 0x00	; 0
+ 2fc:	80 81       	ld	r24, Z
+ 2fe:	8f 7d       	andi	r24, 0xDF	; 223
+ 300:	80 83       	st	Z, r24
+    }
+}
+ 302:	ff 91       	pop	r31
+ 304:	ef 91       	pop	r30
+ 306:	9f 91       	pop	r25
+ 308:	8f 91       	pop	r24
+ 30a:	2f 91       	pop	r18
+ 30c:	0f 90       	pop	r0
+ 30e:	0f be       	out	0x3f, r0	; 63
+ 310:	0f 90       	pop	r0
+ 312:	1f 90       	pop	r1
+ 314:	18 95       	reti
+
+00000316 <__vector_18>:
+
+// ******************************************************
+//	Handle for Rx Interrupt 
+//******************************************************
+
+ISR (USART_RX_vect)  {  // Interrupt handler for receive complete interrupt 
+ 316:	1f 92       	push	r1
+ 318:	0f 92       	push	r0
+ 31a:	0f b6       	in	r0, 0x3f	; 63
+ 31c:	0f 92       	push	r0
+ 31e:	11 24       	eor	r1, r1
+ 320:	2f 93       	push	r18
+ 322:	8f 93       	push	r24
+ 324:	9f 93       	push	r25
+ 326:	ef 93       	push	r30
+ 328:	ff 93       	push	r31
+
+	unsigned char key;
+	 key = UDR0;            // Get UDR --> Buff 
+ 32a:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+	 *RxDBuffWR0 = key;
+ 32e:	e0 91 03 01 	lds	r30, 0x0103	; 0x800103 <RxDBuffWR0>
+ 332:	f0 91 04 01 	lds	r31, 0x0104	; 0x800104 <RxDBuffWR0+0x1>
+ 336:	80 83       	st	Z, r24
+	if(UartEchoOn==1) {
+		if(!uart0_write_buff_full())
+			uart0_putc(key);
+		}
+    RxDCnt0++;
+ 338:	80 91 87 01 	lds	r24, 0x0187	; 0x800187 <RxDCnt0>
+ 33c:	8f 5f       	subi	r24, 0xFF	; 255
+ 33e:	80 93 87 01 	sts	0x0187, r24	; 0x800187 <RxDCnt0>
+    if (++RxDBuffWR0 >= RxDBuff0 + UART_BUF_SIZE) // Wrap Pointer 
+ 342:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <RxDBuffWR0>
+ 346:	90 91 04 01 	lds	r25, 0x0104	; 0x800104 <RxDBuffWR0+0x1>
+ 34a:	01 96       	adiw	r24, 0x01	; 1
+ 34c:	90 93 04 01 	sts	0x0104, r25	; 0x800104 <RxDBuffWR0+0x1>
+ 350:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <RxDBuffWR0>
+ 354:	87 54       	subi	r24, 0x47	; 71
+ 356:	91 40       	sbci	r25, 0x01	; 1
+ 358:	30 f0       	brcs	.+12     	; 0x366 <__vector_18+0x50>
+        RxDBuffWR0 = RxDBuff0;
+ 35a:	87 e0       	ldi	r24, 0x07	; 7
+ 35c:	91 e0       	ldi	r25, 0x01	; 1
+ 35e:	90 93 04 01 	sts	0x0104, r25	; 0x800104 <RxDBuffWR0+0x1>
+ 362:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <RxDBuffWR0>
+}
+ 366:	ff 91       	pop	r31
+ 368:	ef 91       	pop	r30
+ 36a:	9f 91       	pop	r25
+ 36c:	8f 91       	pop	r24
+ 36e:	2f 91       	pop	r18
+ 370:	0f 90       	pop	r0
+ 372:	0f be       	out	0x3f, r0	; 63
+ 374:	0f 90       	pop	r0
+ 376:	1f 90       	pop	r1
+ 378:	18 95       	reti
+
+0000037a <__udivmodsi4>:
+ 37a:	a1 e2       	ldi	r26, 0x21	; 33
+ 37c:	1a 2e       	mov	r1, r26
+ 37e:	aa 1b       	sub	r26, r26
+ 380:	bb 1b       	sub	r27, r27
+ 382:	fd 01       	movw	r30, r26
+ 384:	0d c0       	rjmp	.+26     	; 0x3a0 <__udivmodsi4_ep>
+
+00000386 <__udivmodsi4_loop>:
+ 386:	aa 1f       	adc	r26, r26
+ 388:	bb 1f       	adc	r27, r27
+ 38a:	ee 1f       	adc	r30, r30
+ 38c:	ff 1f       	adc	r31, r31
+ 38e:	a2 17       	cp	r26, r18
+ 390:	b3 07       	cpc	r27, r19
+ 392:	e4 07       	cpc	r30, r20
+ 394:	f5 07       	cpc	r31, r21
+ 396:	20 f0       	brcs	.+8      	; 0x3a0 <__udivmodsi4_ep>
+ 398:	a2 1b       	sub	r26, r18
+ 39a:	b3 0b       	sbc	r27, r19
+ 39c:	e4 0b       	sbc	r30, r20
+ 39e:	f5 0b       	sbc	r31, r21
+
+000003a0 <__udivmodsi4_ep>:
+ 3a0:	66 1f       	adc	r22, r22
+ 3a2:	77 1f       	adc	r23, r23
+ 3a4:	88 1f       	adc	r24, r24
+ 3a6:	99 1f       	adc	r25, r25
+ 3a8:	1a 94       	dec	r1
+ 3aa:	69 f7       	brne	.-38     	; 0x386 <__udivmodsi4_loop>
+ 3ac:	60 95       	com	r22
+ 3ae:	70 95       	com	r23
+ 3b0:	80 95       	com	r24
+ 3b2:	90 95       	com	r25
+ 3b4:	9b 01       	movw	r18, r22
+ 3b6:	ac 01       	movw	r20, r24
+ 3b8:	bd 01       	movw	r22, r26
+ 3ba:	cf 01       	movw	r24, r30
+ 3bc:	08 95       	ret
+
+000003be <_exit>:
+ 3be:	f8 94       	cli
+
+000003c0 <__stop_program>:
+ 3c0:	ff cf       	rjmp	.-2      	; 0x3c0 <__stop_program>
